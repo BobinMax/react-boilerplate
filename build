@@ -1,0 +1,35 @@
+#!/bin/bash
+
+echo ''
+echo 'Building Front-End app ...'
+echo '--------------------------------------------'
+
+echo '— update npm to latest version'
+echo ''
+sudo npm install npm -g
+
+echo '— install Webpack, Webpack-dev-server globally'
+echo ''
+sudo npm install webpack webpack-dev-server -g
+
+echo '— install npm devDependencies:'
+echo ''
+npm install --no-bin-links
+
+echo '— install npm devDependencies again (if maximum call stack size exceeded):'
+echo ''
+npm install --no-bin-links
+
+echo '— rebuild node-sass:'
+echo ''
+npm rebuild node-sass --no-bin-links
+
+echo '— running Webpack and build our app:'
+echo ''
+webpack --colors --progress --display-error-details
+
+echo '-------------'
+echo ''
+echo 'DONE !!!'
+echo ''
+echo ''
